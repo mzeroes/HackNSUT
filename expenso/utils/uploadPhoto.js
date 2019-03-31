@@ -39,6 +39,6 @@ export async function uploadImageAsync(uri) {
   blob.close();
   const url = await snapshot.ref.getDownloadURL();
   const QUERY = `https://cryptic-springs-10058.herokuapp.com/getdata?q=${url}&uid=${user.uid}&key=test}`;
-  fetch(QUERY).then(() => { console.log('DONE'); });
+  fetch(QUERY).then(() => { console.log(''); });
   return url;
 }

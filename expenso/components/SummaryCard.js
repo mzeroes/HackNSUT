@@ -1,24 +1,17 @@
 import * as React from 'react';
 import { List, Chip } from 'react-native-paper';
-import { getSummaryData } from 'utils/getSummaryData';
+import { summaryDataUpdate } from 'utils/summaryDataUpdate';
+import { connect } from 'react-redux';
+import store from 'redux/store';
 
-export default class MyComponent extends React.Component {
-  constructor(props) {
-    super(props);
-    this.updateSummaryAsync();
-  }
-
-  state = {
-    summary: ''
-  };
-
-  updateSummaryAsync = async () => {
-    console.log('TEST');
-    const summary = await getSummaryData();
-    this.setState({ summary });
+class MyComponent extends React.Component {
+  componentWillMount() {
+    summaryDataUpdate();
   }
 
   render() {
+    const { summary } = this.props;
+    console.log(JSON.stringify(summary, null, 4));
     return (
       <List.Section>
         {/* <List.Subheader>Summary</List.Subheader> */}
@@ -31,7 +24,7 @@ export default class MyComponent extends React.Component {
           >
          Expenses :
             {' '}
-            {this.state.summary.Expense}
+            {summary.Expense}
           </Chip>
           <Chip
             icon="add"
@@ -41,7 +34,7 @@ export default class MyComponent extends React.Component {
           >
           Income :
             {' '}
-            {this.state.summary.Income}
+            {summary.Income}
           </Chip>
           <Chip
             icon="done"
@@ -51,10 +44,17 @@ export default class MyComponent extends React.Component {
           >
           Balance :
             {' '}
-            {this.state.summary.Balance}
+            {summary.Balance}
           </Chip>
         </List.Section>
       </List.Section>
     );
   }
 }
+
+
+const mapStateToProps = state => ({
+  summary: state.summary
+});
+
+export default connect(mapStateToProps)(MyComponent);

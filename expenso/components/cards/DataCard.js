@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Text, ListView, Linking } from 'react-native';
 import { Theme } from 'theme/index';
-import { Subheading, Avatar, Button, Card, Paragraph, Menu, Divider, Title, Portal, Modal, IconButton } from 'react-native-paper';
+import { Subheading, Avatar, Button, Card, Chip, Paragraph, Menu, Divider, Title, Portal, Modal, IconButton } from 'react-native-paper';
 import { Icon } from 'react-native-elements';
 import { updateDataInFirebase } from 'api/user';
 
@@ -36,6 +36,14 @@ export default class DataCard extends React.Component {
             )}
           >
           </Card.Title>
+          <Chip
+            icon={data.type === 'Expense' ? 'error' : 'add'}
+            style={[data.type === 'Expense' && { backgroundColor: '#ccc' }, { marginBottom: 10, marginLeft: 16, paddingRight: 10, alignSelf: 'flex-start', }]}
+            onPress={() => {
+            }}
+          >
+            {data.category}
+          </Chip>
           {data.others
               && (
               <Paragraph
@@ -50,6 +58,7 @@ export default class DataCard extends React.Component {
             {'  '}
             {data.date}
           </Subheading> */}
+
           <Card.Actions style={{ justifyContent: 'flex-end', marginBottom: 0 }}>
             <IconButton icon="more-vert" onPress={this._openMenu} />
             <Menu

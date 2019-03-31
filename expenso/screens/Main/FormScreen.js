@@ -23,6 +23,8 @@ import {
   boolean as yupBoolean,
   number as yupNumber
 } from 'yup';
+import { summaryDataUpdate } from 'utils/summaryDataUpdate';
+
 import { storePatientsInFire, updateDataInFirebase } from 'api/user';
 import { connect } from 'react-redux';
 import TopHeader from 'components/bars/TopHeader';
@@ -133,6 +135,7 @@ class FormScreen extends React.Component {
                 storePatientsInFire(values)
                   .then(() => {
                     this.handleResponse();
+                    summaryDataUpdate();
                   })
                   .catch(() => {
                     // handle

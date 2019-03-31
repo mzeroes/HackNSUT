@@ -51,7 +51,7 @@ export const storePatientsInFire = async (data) => {
     ...data,
     ...dateTime
   }).then((resp) => {
-    console.warn('Test', resp);
+    console.log('Test', resp);
   }).catch((error) => {
     console.warn('error ', error);
   });

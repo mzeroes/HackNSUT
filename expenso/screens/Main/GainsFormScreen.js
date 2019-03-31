@@ -27,6 +27,9 @@ import WithIcon from 'components/WithIcon';
 
 import { Icon } from 'react-native-elements';
 import { NavigationEvents } from 'react-navigation';
+import store from 'redux/store';
+import { UPDATE_SUMMARY } from 'redux/action';
+import { summaryDataUpdate } from 'utils/summaryDataUpdate';
 import UploadAvatar from '../../components/UploadAvatar';
 
 class FormScreen extends React.Component {
@@ -124,6 +127,7 @@ class FormScreen extends React.Component {
                 storePatientsInFire(values)
                   .then(() => {
                     this.handleResponse();
+                    summaryDataUpdate();
                   })
                   .catch(() => {
                     // handle
@@ -188,7 +192,7 @@ class FormScreen extends React.Component {
                       touched.amount && errors.amount ? errors.amount : undefined
                     }
                 />
-                <Text>{JSON.stringify(this.state)}</Text>
+                {/* <Text>{JSON.stringify(this.state)}</Text> */}
                 {/* <TextInputWithIcon
                   icon="birthday-cake"
                   iconType="font-awesome"
@@ -204,7 +208,6 @@ class FormScreen extends React.Component {
                 <WithIcon>
                   <Text style={{ paddingBottom: 20 }}> Chose a category</Text>
                   <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-evenly' }}>
-
                     <Chip
                       style={{ marginBottom: 10 }}
                       selected={this.state.salary}
@@ -224,7 +227,6 @@ salary
                       }}
                     >
 Savings
-
                     </Chip>
                     <Chip
                       selected={this.state.others}
@@ -254,30 +256,15 @@ Others
                     }
                 />
                 <TextInputWithIcon
-                  icon="location"
-                  iconType="entypo"
-                  style={localStyles.rightTextInputs}
-                  onChangeText={value => setFieldValue('address', value)}
-                  value={values.address}
-                  label="Address"
-                  onBlur={() => setFieldTouched('address')}
-                  placeholder="Address"
-                  numberOfLines={(values.address && values.address.length > 10) ? 3 : 1}
-                  multiline
-                  error={
-                      touched.name && errors.name ? errors.name : undefined
-                    }
-                />
-                <TextInputWithIcon
                   icon="medicinebox"
                   iconType="antdesign"
                   onChangeText={(value) => {
                     setFieldValue('others', value);
                   }}
                   value={values.others}
-                  label="Summary"
+                  label="Discription"
                   onBlur={() => setFieldTouched('others')}
-                  placeholder="Summary"
+                  placeholder="Discription"
                   numberOfLines={
                       (values.others && values.others.length > 10) ? 3 : 1}
                   multiline

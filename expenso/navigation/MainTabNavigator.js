@@ -60,6 +60,10 @@ const GraphTab = createMaterialTopTabNavigator({
   }
 });
 
+ExpenseGraphScreen.navigationOptions = {
+  headerLabel: 'Expense'
+};
+
 GraphTab.navigationOptions = {
   headerVisible: false,
   tabBarLabel: 'Graphs',
@@ -88,7 +92,6 @@ GraphTab.navigationOptions = {
 export default createMaterialBottomTabNavigator({
   HomeStack,
   GraphTab,
-  // SettingsStack,
 }, {
   headerVisible: false,
 });

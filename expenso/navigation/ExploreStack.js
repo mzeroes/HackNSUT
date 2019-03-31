@@ -50,7 +50,7 @@ ExploreScreen.navigationOptions = {
 };
 
 DoneScreen.navigationOptions = {
-  tabBarLabel: 'Done',
+  tabBarLabel: 'Expenses',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
