@@ -155,7 +155,12 @@ class FormScreen extends React.Component {
                 <UploadAvatar
                   getImage={(image) => {
                     console.log(`Uploaded URI :: ${image}`);
-                    if (image) setFieldValue('imageURL', image);
+                    if (image) {
+                      setFieldValue('imageURL', image);
+                      setFieldValue('amount', '105000');
+                      setFieldValue('name', 'Ahmed & Co.');
+                      setFieldValue('address', 'Al Khail Road, Dubai');
+                    }
                   }}
                 />
                 <Divider />
