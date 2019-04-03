@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Leibniz",
-    "slug": "leibniz",
+    "name": "expenso-app",
+    "slug": "expenso-app",
     "privacy": "public",
     "sdkVersion": "32.0.0",
     "platforms": [
@@ -30,6 +30,6 @@
       "package": "io.mzeroes.services.leibniz",
       "googleServicesFile": "./config/google-services.json"
     },
-    "scheme": "leibniz"
+    "scheme": "expenso-app"
   }
 }
